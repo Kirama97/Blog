@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/index.html">
+  <title>Contact — Mon Blog</title>
+
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div style="font-weight:800">Mon Blog</div>
+      <nav>
+        <a href="/index.html">Accueil</a>
+        <a href="/Pages/About.html">À propos</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="card">
+        <h1 style="margin-top:0">Contact</h1>
+        <p class="muted">Tu peux m'envoyer un message via le formulaire ci-dessous. (Ce modèle est statique, la soumission nécessite un backend pour être réellement envoyée.)</p>
+
+        <form action="#" method="post" onsubmit="return false;">
+          <div>
+            <label for="nom">Nom</label>
+            <input id="nom" name="nom" placeholder="Votre nom" />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" placeholder="email@exemple.com" />
+          </div>
+          <div class="full">
+            <label for="sujet">Sujet</label>
+            <input id="sujet" name="sujet" placeholder="Sujet du message" />
+          </div>
+          <div class="full">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Écrivez votre message ici..."></textarea>
+          </div>
+
+          <div class="full actions">
+            <button class="btn" type="submit">Envoyer</button>
+            <a class="back" href="home.html" style="align-self:center;padding:8px 10px">Retour</a>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  
+  <script src="/script.js" type="module"></script>
+</body>
+</html>

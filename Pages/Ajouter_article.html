@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  
+  <title>Ajouter un article</title>
+
+</head>
+<body>
+
+<div class="wrap">
+   <header>
+      <div style="font-weight:800">Mon Blog</div>
+      <nav>
+        <a href="/index.html">Accueil</a>
+        <a href="/Pages/Contact.html">Contact</a>
+      </nav>
+    </header>
+
+  <main>
+    <h2>Ajouter un nouvel article</h2>
+    <form action="#" >
+      <div>
+        <label for="titre">Titre de l’article :</label>
+        <input type="text" id="titre" name="titre" placeholder="Entrez le titre de votre article" >
+      </div>
+     
+
+      <div>
+        <label for="auteur">Auteur</label>
+        <input type="texte"  id="auteur" name="auteur" placeholder="Kira/dev" >
+      </div>
+      <div>
+        <label for="image">Image de l'article :</label>
+        <input type="file"  id="image" name="image" placeholder="https://exemple.com/image.jpg" >
+      </div>
+
+      <div>
+        <label for="categorie">Catégorie :</label>
+        <select id="categorie" name="categorie" >
+          <option value="">-- Sélectionnez une catégorie --</option>
+          <option value="technologie">Technologie</option>
+          <option value="voyage">Voyage</option>
+          <option value="lifestyle">Lifestyle</option>
+          <option value="éducation">Éducation</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="contenu">Contenu de l’article :</label>
+        <textarea id="contenu" name="contenu" placeholder="Écrivez ici votre article..." ></textarea>
+      </div>
+
+      <div class=""></div>
+      <button type="submit" class="btn-submit">Publier l’article</button>
+    </form>
+  </main>
+
+
+
+  </div>
+
+  
+  <script src="/script.js" type="module" ></script>
+ 
+
+</body>
+</html>

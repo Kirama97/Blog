@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+  <title>Accueil — Mon Blog</title>
+ 
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">MB</div>
+        <div>
+          <div style="font-weight:800">Mon Blog</div>
+          <div class="muted" style="font-size:13px">Partage, idées et découvertes</div>
+        </div>
+      </div>
+      <nav>
+        <a href="home.html" class="active">Accueil</a>
+        <a href="/Pages/Contact.html">Contact</a>
+        <a href="/Pages/Contact.html">À propos</a>
+      </nav>
+    </header>
+
+    <div class="layout">
+      <!-- ASIDE -->
+      <aside class="aside">
+        <div class="card">
+          <h3>À propos de moi</h3>
+          <div class="profile">
+            <div class="avatar"><img src="/Assets/images/profil.png" alt="avatar" style="width:100%;height:100%;object-fit:cover"></div>
+            <div>
+              <div style="font-weight:700">Diène Thiam</div>
+              <div class="muted" style="font-size:13px">Développeur & passionné de design</div>
+            </div>
+          </div>
+          <p class="muted" style="font-size:14px">J'écris sur le web, la programmation, l'UX et parfois sur la vie quotidienne. Abonne-toi pour ne rien rater.</p>
+        </div>
+
+        <div class="card">
+          <h3>Recherche</h3>
+          <div class="search">
+            <input placeholder="Rechercher un article..." aria-label="Recherche" />
+          </div>
+          <h3>Catégories</h3>
+          <ul class="muted" style="padding-left:18px">
+            <li>Développement</li>
+            <li>Design</li>
+            <li>Productivité</li>
+            <li>Voyage</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Articles récents</h3>
+          <ol class="muted" style="padding-left:18px;margin:8px 0 0 0">
+            <li>La transformation numérique</li>
+            <li>Design accessible</li>
+            <li>Bonnes pratiques CSS</li>
+          </ol>
+        </div>
+      </aside>
+
+
+      <main>
+        <section class="card">
+           <div class="recent_article_box">
+             <div class="card_left">
+                <h1 style="margin-top:0">Derniers articles</h1>
+                <p class="muted">Lectures, analyses et guides — affichés sans JavaScript.</p>
+            </div>
+            <a href="/Pages/Ajouter_article.html" class="btn_ajout_article">
+                Ajouter un article
+            </a>
+           </div>
+        </section>
+
+        <section class="articles">
+
+           
+         <article class="card post" aria-labelledby="post1title">
+             
+          </article>
+      
+         <article class="card post" aria-labelledby="post2title">
+            <img src="" alt="Astuces CSS">
+            <div>
+              <h2 id="post2title">5 astuces CSS pour accélérer votre développement</h2>
+              <div class="muted">Publié le 15 septembre 2025 — Frontend</div>
+              <p class="excerpt">Des raccourcis pratiques, des propriétés modernes et quelques conventions de nommage qui facilitent la maintenance à long terme. Combinez les variables CSS, les utilitaires et une structure de composants claire pour gagner du temps.</p>
+              <div class="meta"><div></div><a class="readmore" href="propos.html">Lire →</a></div>
+            </div>
+          </article>
+
+        </section>
+
+        <footer>
+          © <span id="yr">2025</span> — Mon Blog
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <script src="/script.js" type="module">
+
+    
+
+  </script>
+</body>
+</html>
