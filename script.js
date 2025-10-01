@@ -61,13 +61,13 @@ function Afficher_article() {
           <a class="readmore" href="#" onclick="editArticle(${index})">En savoir plus →</a>
         </div>
 
-        <img class="trois_points" src="/Assets/icone/trois_points.svg" alt="">
+        <img class="trois_points" title="Option" src="/Assets/icone/trois_points.svg" alt="">
         <div class="option">
-          <div class="option_box modifier_article" onclick="editArticle(${index})">
+          <div class="option_box modifier_article" onclick="window.location.href='/Pages/edite.html?id=${article.id}'" >
             <p>Modifier</p> 
             <img src="/Assets/icone/pencil.svg" id="option_icone" class="edite" alt="">
           </div>
-          <div class="option_box supprimer_article" onclick="window.location.href='Pages/edite.html'">
+          <div class="option_box supprimer_article" onclick="deleteArticle(${index})" >
             <p>Supprimer</p>
             <img src="/Assets/icone/trash.svg" id="option_icone" class="trash" alt="">
           </div>
@@ -86,55 +86,68 @@ function Afficher_article() {
 
 Afficher_article();
 
-
 function Ajouter_article() {
   const ajouter_btn = document.querySelector('.btn-submit');
-
   if (!ajouter_btn) return;
+
+  const inputImage = document.getElementById('image');
+  const preview = document.getElementById('preview');
+  let imageBase64 = ""; 
+  
+ inputImage.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+      imageBase64 = event.target.result;
+      preview.src = imageBase64;      
+      preview.style.display = "block";  
+    };
+
+    reader.readAsDataURL(file); 
+  } else {
+    preview.style.display = 'none';
+    preview.src = '';
+    imageBase64 = "";
+  }
+});
 
   ajouter_btn.addEventListener('click', (e) => {
     e.preventDefault();
 
     const titre = document.querySelector('input[name="titre"]')?.value.trim();
     const auteur = document.querySelector('input[name="auteur"]')?.value.trim();
-    const image = document.querySelector('input[name="image"]')?.value;
     const categorie = document.getElementById("categorie")?.value;
     const contenu_article = document.getElementById("contenu")?.value.trim();
     const date_publication = new Date().toISOString();
 
-    if (!titre || !auteur || !image || !categorie || !contenu_article) {
+    if (!titre || !auteur || !imageBase64 || !categorie || !contenu_article) {
       alert("Veuillez remplir tous les champs !");
       return;
     }
 
     const id = Date.now();
-    const value_article = { id, titre, auteur, date_publication, image, categorie, contenu_article };
+    const value_article = {
+      id,
+      titre,
+      auteur,
+      date_publication,
+      image: imageBase64,
+      categorie,
+      contenu_article
+    };
 
     les_articles.push(value_article);
     localStorage.setItem('articles', JSON.stringify(les_articles));
 
-    Afficher_article();
-    alert("Article ajouté !");
-    window.location.href='/index.html';
+    alert("✅ Article ajouté avec succès !");
+    window.location.href = '/index.html';
   });
 }
 
 Ajouter_article();
-
-// modifier_un_article
-
-// window.editArticle = function (index) {
-//     const supprimer_article = document.querySelector('.modifier_article')
-//     if(supprimer_article){
-//         supprimer_article.addEventListener('click' , () => {
-//            alert("Modifier l’article n°" );
-//         })
-//     }
-  
-// }
-
-
-
 
 
 
@@ -146,12 +159,19 @@ window.deleteArticle = function (index) {
 
   if (!confirm("Voulez-vous vraiment supprimer cet article ?")) return;
 
-  // Supprime l’article
   articles.splice(index, 1);
 
-  // Met à jour le localStorage
+
   localStorage.setItem("articles", JSON.stringify(articles));
 
   alert("🗑️ Article supprimé !");
-  window.location.reload(); // rafraîchit la liste
+  window.location.reload(); 
 };
+
+
+
+window.editeArticle = function () {
+
+
+
+}

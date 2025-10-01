@@ -181,6 +181,14 @@ nav a.active {
 }
 
 
+/* ajouter aticle  */*
+
+#preview {
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  object-fit: cover;
+}
+
 /* bloc article */
 
 
@@ -198,6 +206,7 @@ nav a.active {
   top: 0;
   width: 15px;
   height: 20px;
+  cursor: pointer;
 
 }
 
