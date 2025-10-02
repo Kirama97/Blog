@@ -228,17 +228,7 @@ nav a:hover {
   /* position: relative; */
  
 }
-
-.text_limite {
-   display: -webkit-box;
-  -webkit-line-clamp: 7; 
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-
-
-}
+  
 
 .page_article main {
   max-width:900px;
@@ -331,6 +321,7 @@ nav a:hover {
   top: 40px;
   right: 25px;
   padding: 5px ;
+  gap: 5px;
   border-radius: 5px;
   background: linear-gradient(135deg, var(--accent), #7c3aed);;
   color: rgb(0, 0, 0);
@@ -347,11 +338,12 @@ nav a:hover {
   align-items: center;
   justify-content: space-between;
   padding: 2px 20px;
-  gap: 10px;
+  gap: 15px;
   font-size: 14px;
   border-radius: 5px;
-  background-color: #ffffff;
-  border: 1px solid black;
+  background-color: #000000;
+  border: 1px solid rgb(78, 73, 73);
+  color: white;
 }
 
 
@@ -361,9 +353,15 @@ nav a:hover {
    color: white;
    
 }
+.page_article .option_box:hover {
+   background-color: #1d3b5c;
+   cursor: pointer;
+   color: white;
+   
+}
 
 
-.page_article .option_box:hover .edite {
+.page_article .option_box .edite {
    filter: invert(1);
 }
 

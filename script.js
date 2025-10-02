@@ -56,8 +56,11 @@ let les_articles = JSON.parse(localStorage.getItem("articles")) || [];
       `;
       return;
     }
+      const recent = [...liste]
+      .sort((a, b) => new Date(b.date_publication) - new Date(a.date_publication))
+      .slice(0, 4);
 
-    liste.forEach((article) => {
+    recent.forEach((article) => {
       const new_article = document.createElement('article');
       new_article.className = "card post";
 
@@ -66,7 +69,7 @@ let les_articles = JSON.parse(localStorage.getItem("articles")) || [];
         <div class="">
           <h2>${article.titre}</h2>
           <div class="muted">Publié le ${formatDate(article.date_publication)} — ${article.categorie}</div>
-          <p class="excerpt text_limite">${article.contenu_article}</p>
+          <p class="excerpt text_limite">${article.contenu_article.slice(0, 150)}...</p>
           <div class="meta">
             <div class="muted">${article.auteur}</div>
             <a class="readmore"   onclick="window.location.href='/article.html?id=${article.id}'">En savoir plus →</a>

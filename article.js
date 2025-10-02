@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <img class="image_article" src="${article.image}" alt="${article.titre}" style="width:100%; max-height:400px; object-fit:cover; border-radius:8px;">
 
       <!-- Option menu -->
-      <img class="trois_points" title="Option" src="/Assets/icone/trois_points.svg" alt="" style="position:absolute; top:10px; right:10px; width:25px; cursor:pointer;">
-      <div class="option" style="display:none; position:absolute; top:40px; right:10px; background:#fff; box-shadow:0 0 10px rgba(0,0,0,0.2); border-radius:8px; z-index:10;">
+      <img class="trois_points" title="Option" src="/Assets/icone/trois_points.svg" alt="" >
+      <div class="option" ">
         <div class="option_box modifier_article" id="modifier">
           <p>Modifier</p>
           <img src="/Assets/icone/pencil.svg" id="option_icone" class="edite" alt="">
