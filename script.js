@@ -179,28 +179,36 @@ Ajouter_article();
 
 // recherche 
 
-const recherche_input = document.getElementById('Recherche');
+const recherche_input = document.querySelectorAll('.Recherche');
 
 
+ recherche_input.forEach((r) =>{
 
-recherche_input.addEventListener('keyup', (e) => {
-  const saisir = e.target.value.trim().toLowerCase();
-  const resultat = les_articles.filter(a => a.titre.toLowerCase().includes(saisir));
+     if (r) {
 
-  const container_article = document.querySelector('.articles');
+    r.addEventListener('keyup', (e) => {
+    const saisir = e.target.value.trim().toLowerCase();
+    const resultat = les_articles.filter(a => a.titre.toLowerCase().includes(saisir));
 
-  if (resultat.length > 0) {
-    container_article.innerHTML = '';
-    Afficher_article(resultat);
-  } else {
-    container_article.innerHTML = `
-      <p class="message_recherche">
-        Aucun article disponible pour ✍️ <br>
-        <span>${saisir}</span>.
-      </p>
-    `;
-  }
-});
+    const container_article = document.querySelector('.articles');
+
+      if (resultat.length > 0) {
+        container_article.innerHTML = '';
+        Afficher_article(resultat);
+      } else {
+        container_article.innerHTML = `
+          <p class="message_recherche">
+            Aucun article disponible pour ✍️ <br>
+            <span>${saisir}</span>.
+          </p>
+        `;
+      }
+    });
+        
+    }
+ })
+
+
 
   // article recent 
 

@@ -179,6 +179,10 @@ nav a:hover {
  
 }
 
+#card_for_mobile {
+  display: none;
+}
+
 .recent_article_box {
 
     display: flex;
@@ -523,7 +527,16 @@ footer {
  
 
     display: none;
+    
   }
+
+  
+/* card for mobil  */
+
+#card_for_mobile {
+  display: block;
+  margin-bottom: 30px;
+}
 }
 
 
@@ -669,6 +682,8 @@ nav a {
   padding-top: 70px;
   
 }
+
+
 
 
 }
