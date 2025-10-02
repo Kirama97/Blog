@@ -188,6 +188,18 @@ nav a:hover {
 
 }
 
+.message_article_vide {
+  display: block;
+  text-align: center;
+  height: 200px;
+  background-color: white;
+  color: rgb(0, 0, 0);
+  border-radius: 20px;
+  font-size: 18px;
+  padding-top: 50px;
+  
+}
+
 .recent_article_box .btn_ajout_article {
     background-color: var(--accent);
     color: white;
@@ -226,6 +238,12 @@ nav a:hover {
 
 
 
+}
+
+.page_article main {
+  max-width:900px;
+  margin:auto;
+  padding:20px;
 }
 
 
@@ -504,9 +522,7 @@ footer {
   .aside {
 
     position: absolute;
-    /* top: 0; */
-    /* z-index: 0; */
-    bottom: 0;
+ 
 
     display: none;
   }
@@ -625,8 +641,11 @@ nav a {
 }
 
 .page_article main {
-  padding: 0;
+  max-width:1000px;
+  margin:auto;
+  padding:2px;
 }
+
 
 
 .page_article h1 {
@@ -640,6 +659,18 @@ nav a {
   margin-bottom:20px;
 }
 
+.recent_article_box h1 {
+  font-size: 25px;
+}
+
+
+
+.message_article_vide {
+ 
+  font-size: 16px;
+  padding-top: 70px;
+  
+}
 
 
 }

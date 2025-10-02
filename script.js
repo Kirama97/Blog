@@ -52,7 +52,7 @@ let les_articles = JSON.parse(localStorage.getItem("articles")) || [];
 
     if (liste.length === 0) {
       container_article.innerHTML = `
-        <p class="">Aucun article disponible. Ajoutez-en un ! ✍️</p>
+        <p class="message_article_vide">Aucun article disponible. Ajoutez-en un ! ✍️</p>
       `;
       return;
     }
