@@ -28,32 +28,12 @@ document.querySelectorAll('nav a').forEach(link => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// formater la date
 
 function formatDate(iso) {
   const d = new Date(iso);
   return d.toLocaleString('fr-FR');
 }
-
 
 
 
@@ -72,12 +52,12 @@ let les_articles = JSON.parse(localStorage.getItem("articles")) || [];
 
     if (liste.length === 0) {
       container_article.innerHTML = `
-        <p class="text-center text-gray-500 text-lg">Aucun article disponible. Ajoutez-en un ! ✍️</p>
+        <p class="">Aucun article disponible. Ajoutez-en un ! ✍️</p>
       `;
       return;
     }
 
-    liste.forEach((article, index) => {
+    liste.forEach((article) => {
       const new_article = document.createElement('article');
       new_article.className = "card post";
 
@@ -115,19 +95,39 @@ Afficher_article();
     const preview = document.getElementById('preview');
     let imageBase64 = ""; 
     
+  const MAX_SIZE_MB = 1;
+
   inputImage.addEventListener('change', (e) => {
     const file = e.target.files[0];
 
+     
+
     if (file) {
-      const reader = new FileReader();
 
-      reader.onload = function (event) {
-        imageBase64 = event.target.result;
-        preview.src = imageBase64;      
-        preview.style.display = "block";  
-      };
+      const la_taille = file.size / 900 / 900 ;
 
-      reader.readAsDataURL(file); 
+      if(la_taille > MAX_SIZE_MB){
+
+          alert(`Le fichier est trop lourd ! Maximum ${MAX_SIZE_MB} Mo.`);
+           inputImage.value = '';
+            preview.style.display = 'none';
+            return;
+   
+          } else {
+
+          const reader = new FileReader();
+
+          reader.onload = function (event) {
+            imageBase64 = event.target.result;
+            preview.src = imageBase64;      
+            preview.style.display = "block";  
+          };
+
+          reader.readAsDataURL(file); 
+
+          }
+
+
     } else {
       preview.style.display = 'none';
       preview.src = '';

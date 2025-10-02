@@ -35,21 +35,38 @@ document.getElementById("contenu").value = article.contenu_article;
     const file = e.target.files[0];
 
     if (file) {
-      const reader = new FileReader();
 
-      reader.onload = function (event) {
-        imageBase64 = event.target.result;
-        preview.src = imageBase64;      
-        preview.style.display = "block";  
-      };
+      const la_taille = file.size / 900 / 900 ;
 
-      reader.readAsDataURL(file); 
+      if(la_taille > MAX_SIZE_MB){
+
+          alert(`Le fichier est trop lourd ! Maximum ${MAX_SIZE_MB} Mo.`);
+           inputImage.value = '';
+            preview.style.display = 'none';
+            return;
+   
+          } else {
+
+          const reader = new FileReader();
+
+          reader.onload = function (event) {
+            imageBase64 = event.target.result;
+            preview.src = imageBase64;      
+            preview.style.display = "block";  
+          };
+
+          reader.readAsDataURL(file); 
+
+          }
+
+
     } else {
       preview.style.display = 'none';
       preview.src = '';
       imageBase64 = "";
     }
   });
+
 
 
 document.querySelector('.btn-submit').addEventListener('click' , (e) =>{

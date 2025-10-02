@@ -206,11 +206,7 @@ nav a:hover {
 }
 
 
-.articles {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-}
+
 
 .post {
   display: grid;
@@ -569,6 +565,10 @@ nav {
   z-index: 100;
 }
 
+nav a {
+  font-size: 18px;
+}
+
 nav.active {
   position:fixed;
   background:linear-gradient(135deg,var(--accent),#4f46e5);
@@ -590,12 +590,13 @@ nav.active {
 
 .close_nav {
   position: absolute;
-  top: 30px;
+  top: 40px;
   left: -15px;
-  background-color: red;
-  border-radius: 50%;
+  background:linear-gradient(135deg,var(--accent),#4f46e5);
+  border-radius: 20%;
+  box-shadow: 1px 1px 1px black;
   padding: 5px;
-  width: 35px;
+  width: 45px;
   height: 35px;
 }
 
@@ -612,6 +613,32 @@ nav a {
 }
 
 
+
+.post {
+  display: flex;
+  flex-direction: column;
+   gap: 16px;
+}
+
+.post img {
+  height: 250px;
+}
+
+.page_article main {
+  padding: 0;
+}
+
+
+.page_article h1 {
+  font-size: 22px;
+}
+
+.page_article .post .image_article {
+ 
+  height:300px;
+  border-radius:8px;
+  margin-bottom:20px;
+}
 
 
 
