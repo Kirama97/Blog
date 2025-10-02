@@ -187,6 +187,8 @@ const recherche_input = document.querySelectorAll('.Recherche');
      if (r) {
 
     r.addEventListener('keyup', (e) => {
+
+  
     const saisir = e.target.value.trim().toLowerCase();
     const resultat = les_articles.filter(a => a.titre.toLowerCase().includes(saisir));
 
@@ -195,6 +197,10 @@ const recherche_input = document.querySelectorAll('.Recherche');
       if (resultat.length > 0) {
         container_article.innerHTML = '';
         Afficher_article(resultat);
+          const box_top = document.querySelector('#card_for_mobile .card')
+          const box_bottom = document.querySelector('.recent_article_box')
+          box_top.style.display = "none";
+          box_bottom.style.display = "none";
       } else {
         container_article.innerHTML = `
           <p class="message_recherche">
@@ -202,6 +208,7 @@ const recherche_input = document.querySelectorAll('.Recherche');
             <span>${saisir}</span>.
           </p>
         `;
+        
       }
     });
         

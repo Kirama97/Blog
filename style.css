@@ -165,9 +165,11 @@ nav a:hover {
 .search input {
   flex: 1;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid #e6eef6;
 }
+
+
 
 
 .card {
