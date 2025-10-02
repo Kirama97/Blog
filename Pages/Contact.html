@@ -10,18 +10,29 @@
 </head>
 <body>
   <div class="wrap">
-    <header>
-     <div class="logo">KIRA</div>
+     <header>
+      <div class="brand">
+         <a href="/index.html" class="logo">KIRA</a>
+        <div>
+          <div style="font-weight:800">Mon Blog</div>
+          <div class="muted" style="font-size:13px">Partage, idées et découvertes</div>
+        </div>
+      </div>
       <nav>
-        <a href="/index.html">Accueil</a>
+        <svg class="close_nav" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+
+        <a href="/index.html" >Accueil</a>
+        <a href="/Pages/Contact.html" class="active">Contact</a>
         <a href="/Pages/About.html">À propos</a>
       </nav>
+      <svg class="burguer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-align-horizontal-justify-end-icon lucide-align-horizontal-justify-end"><rect width="6" height="14" x="2" y="5" rx="2"/><rect width="6" height="10" x="12" y="7" rx="2"/><path d="M22 2v20"/></svg>
     </header>
+
 
     <main>
       <section class="card">
         <h1 style="margin-top:0">Contact</h1>
-        <p class="muted">Tu peux m'envoyer un message via le formulaire ci-dessous. (Ce modèle est statique, la soumission nécessite un backend pour être réellement envoyée.)</p>
+        <p class="muted">Tu peux m'envoyer un message via le formulaire ci-dessous.</p>
 
         <form action="#" method="post" onsubmit="return false;">
           <div>
@@ -43,7 +54,7 @@
 
           <div class="full actions">
             <button class="btn" type="submit">Envoyer</button>
-            <a class="back" href="home.html" style="align-self:center;padding:8px 10px">Retour</a>
+            <a class="back" href="/index.html" style="align-self:center;padding:8px 10px">Retour</a>
           </div>
         </form>
       </section>

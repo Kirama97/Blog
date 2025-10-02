@@ -1,5 +1,54 @@
 import { articles } from "./data.js";
 
+
+
+
+// bouton burger
+
+const burguer = document.querySelector('.burguer ');
+const close_nav = document.querySelector(".close_nav");
+const nav = document.querySelector("nav");
+
+if (burguer) {
+  burguer.addEventListener("click", () => {
+    nav.classList.toggle('active');
+  });
+
+  close_nav.addEventListener('click', () => {
+    nav.classList.remove('active');
+    
+  });
+}
+
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    nav.classList.remove('active');
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function formatDate(iso) {
   const d = new Date(iso);
   return d.toLocaleString('fr-FR');
@@ -14,21 +63,21 @@ if (!localStorage.getItem("articles")) {
 
 let les_articles = JSON.parse(localStorage.getItem("articles")) || [];
 
-  function Afficher_article() {
+  function Afficher_article(liste = les_articles) {
     const container_article = document.querySelector('.articles');
 
     if (!container_article) return;
 
     container_article.innerHTML = ""; 
 
-    if (les_articles.length === 0) {
+    if (liste.length === 0) {
       container_article.innerHTML = `
         <p class="text-center text-gray-500 text-lg">Aucun article disponible. Ajoutez-en un ! ✍️</p>
       `;
       return;
     }
 
-    les_articles.forEach((article, index) => {
+    liste.forEach((article, index) => {
       const new_article = document.createElement('article');
       new_article.className = "card post";
 
@@ -37,7 +86,7 @@ let les_articles = JSON.parse(localStorage.getItem("articles")) || [];
         <div class="">
           <h2>${article.titre}</h2>
           <div class="muted">Publié le ${formatDate(article.date_publication)} — ${article.categorie}</div>
-          <p class="excerpt">${article.contenu_article}</p>
+          <p class="excerpt text_limite">${article.contenu_article}</p>
           <div class="meta">
             <div class="muted">${article.auteur}</div>
             <a class="readmore"   onclick="window.location.href='/article.html?id=${article.id}'">En savoir plus →</a>
@@ -51,7 +100,7 @@ let les_articles = JSON.parse(localStorage.getItem("articles")) || [];
 
     });
 
-    open_option(); 
+  
 
   
   }
@@ -130,3 +179,40 @@ Ajouter_article();
 const recherche_input = document.getElementById('Recherche');
 
 
+
+recherche_input.addEventListener('keyup', (e) => {
+  const saisir = e.target.value.trim().toLowerCase();
+  const resultat = les_articles.filter(a => a.titre.toLowerCase().includes(saisir));
+
+  const container_article = document.querySelector('.articles');
+
+  if (resultat.length > 0) {
+    container_article.innerHTML = '';
+    Afficher_article(resultat);
+  } else {
+    container_article.innerHTML = `
+      <p class="message_recherche">
+        Aucun article disponible pour ✍️ <br>
+        <span>${saisir}</span>.
+      </p>
+    `;
+  }
+});
+
+  // article recent 
+
+// 
+
+const article_recent= document.getElementById('article_recent');
+
+article_recent.innerHTML =""
+const recent = les_articles.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
+
+    console.log(recent);
+
+recent.forEach(article => {
+  const li = document.createElement("li");
+  li.textContent = ` ${ article.titre } `;
+
+  article_recent.appendChild(li);
+});
