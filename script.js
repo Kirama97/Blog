@@ -3,7 +3,6 @@ import { articles } from "./data.js";
 
 
 
-// bouton burger
 
 const burguer = document.querySelector('.burguer ');
 const close_nav = document.querySelector(".close_nav");
@@ -28,7 +27,7 @@ document.querySelectorAll('nav a').forEach(link => {
 
 
 
-// formater la date
+
 
 function formatDate(iso) {
   const d = new Date(iso);
@@ -175,62 +174,89 @@ Ajouter_article();
 
 
 
+const recherche_inputs = document.querySelectorAll('.Recherche');
 
+recherche_inputs.forEach((r) => {
+  if (!r) return;
 
-// recherche 
-
-const recherche_input = document.querySelectorAll('.Recherche');
-
-
- recherche_input.forEach((r) =>{
-
-     if (r) {
-
-    r.addEventListener('keyup', (e) => {
+  // ecouter le saisir
+  
+  r.addEventListener('keyup', (e) => {
+    const saisir = e.target.value.trim().toLowerCase();
+    const container_article = document.querySelector('.articles');
+    const box_top = document.querySelector('#card_for_mobile .card');
+    const box_bottom = document.querySelector('.recent_article_box');
 
   
-    const saisir = e.target.value.trim().toLowerCase();
-    const resultat = les_articles.filter(a => a.titre.toLowerCase().includes(saisir));
-
-    const container_article = document.querySelector('.articles');
-
-      if (resultat.length > 0) {
-        container_article.innerHTML = '';
-        Afficher_article(resultat);
-          const box_top = document.querySelector('#card_for_mobile .card')
-          const box_bottom = document.querySelector('.recent_article_box')
-          box_top.style.display = "none";
-          box_bottom.style.display = "none";
-      } else {
-        container_article.innerHTML = `
-          <p class="message_recherche">
-            Aucun article disponible pour ✍️ <br>
-            <span>${saisir}</span>.
-          </p>
-        `;
-        
+    if (saisir === "") {
+      Afficher_article(); 
+      if (window.innerWidth < 700) {
+        box_top.style.display = "block";
+        box_bottom.style.display = "block";
       }
-    });
-        
+      return;
     }
- })
+
+ 
+    const resultat = les_articles.filter(a =>
+      a.titre.toLowerCase().includes(saisir)
+    );
+
+    if (resultat.length > 0) {
+      container_article.innerHTML = '';
+      Afficher_article(resultat);
+
+     
+      if (window.innerWidth < 700) {
+        box_top.style.display = "none";
+        box_bottom.style.display = "none";
+      }
+    } else {
+     
+      container_article.innerHTML = `
+        <p class="message_recherche">
+          Aucun article disponible pour ✍️ <br>
+          <span>${saisir}</span>.
+        </p>
+      `;
+      if (window.innerWidth < 700) {
+        box_top.style.display = "none";
+        box_bottom.style.display = "none";
+      }
+    }
+  });
+});
+
+// afficher le bloc top si user ne saissie rien
 
 
+window.addEventListener('resize', () => {
+  const box_top = document.querySelector('#card_for_mobile .card');
+  const box_bottom = document.querySelector('.recent_article_box');
+  const rechercher = Array.from(document.querySelectorAll('.Recherche'))
+    .some(input => input.value.trim() !== "");
 
-  // article recent 
+  if (window.innerWidth < 700 && rechercher) {
+    box_top.style.display = "none";
+    box_bottom.style.display = "none";
+  } else {
+    box_top.style.display = "block";
+    box_bottom.style.display = "block";
+  }
+});
 
-// 
 
-const article_recent= document.getElementById('article_recent');
+// afficher les articles recents
 
-article_recent.innerHTML =""
-const recent = les_articles.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
+const article_recent = document.getElementById('article_recent');
+article_recent.innerHTML = "";
 
-    console.log(recent);
+const recent = [...les_articles]
+  .sort((a, b) => new Date(b.date_publication) - new Date(a.date_publication))
+  .slice(0, 3);
 
 recent.forEach(article => {
   const li = document.createElement("li");
-  li.textContent = ` ${ article.titre } `;
-
+  li.textContent = article.titre;
   article_recent.appendChild(li);
 });
